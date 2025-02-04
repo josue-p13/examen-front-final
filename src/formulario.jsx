@@ -41,21 +41,21 @@ const Formulario = () => {
     const produccionTotal = parseInt(turno1) + parseInt(turno2) + parseInt(turno3);
     const articulo = { nombreArticulo, turno1, turno2, turno3, produccionTotal };
 
-    axios.post('http://localhost:3000/api/produccion/guardar', articulo)
-      .then((response) => {
-        console.log(response.data);
-        const nuevosArticulos = [...articulos, articulo];
-        setArticulos(nuevosArticulos);
-        calcularArticuloMayor(nuevosArticulos);
-        setNombreArticulo('');
-        setTurno1(0);
-        setTurno2(0);
-        setTurno3(0);
-      })
-      .catch((error) => {
-        console.error('Error al guardar los datos:', error);
-      });
-  };
+    axios.post('https://examen-back-final.vercel.app/api/produccion/guardar', articulo)
+  .then((response) => {
+    console.log(response.data);
+    const nuevosArticulos = [...articulos, articulo];
+    setArticulos(nuevosArticulos);
+    calcularArticuloMayor(nuevosArticulos);
+    setNombreArticulo('');
+    setTurno1(0);
+    setTurno2(0);
+    setTurno3(0);
+  })
+  .catch((error) => {
+    console.error('Error al guardar el artículo:', error);
+  });
+
 
   return (
     <div>
